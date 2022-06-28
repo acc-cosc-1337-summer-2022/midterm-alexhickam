@@ -6,7 +6,8 @@ using std::cout;
 
 int main (){
 auto loop = 'Y';
-while(loop == 'Y' || loop == 'y'){
+while(loop == 'Y' || loop == 'y')
+{
     Rectangle user_input;
         int length;
         int width;
