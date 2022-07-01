@@ -1,44 +1,32 @@
 #include "question4.h"
-#include <iostream>
-#include <limits>
-
-using std::cout;
-using std::cin;
-using std::numeric_limits;
-using std::streamsize;
+#include<iostream>
 
 int main()
 {
-    int widgets_sold;
+    auto loop = 'n';
+    double meal_price ;
+    double tip_rate;
+    do
+    {cout<<"Enter Subtotal: ";
+    cin>>meal_price;
 
-    auto loop = 'Y';
-    while(loop == 'Y' || loop == 'y')
-    {
-        cout<<"Enter total widgits sold"<<"\n";
+    cout<<"Enter tip as a whole number for percentage: % ";
+    cin>>tip_rate;
 
-        cin>>widgets_sold;
-        while(1)
-{
-            if(cin.fail())
-            {
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(),(char)'\n');
-                cout<<"You have entered an invalid input."<<"\n"<<"Please enter a whole number or interger value for widgits sold."<< "\n";
-                cin>>widgets_sold;
-            }
-                if(!cin.fail())
-                break;
-            }
+        if (meal_price >= 0 && tip_rate >= 0)
+        {
+        Receipt receipt(meal_price,tip_rate/100);
+        receipt.display_receipt();
+        }
+        else{
+            cout<<"\n"<<"Entry can not be a negative value"<<"\n";
+        }
 
-        cin.get();
+    cout <<"\n"<<"Enter the letter y or Y to restart."<<"\n"<<"Enter any other character to exit: ";
 
-        auto widgets_sold_total = get_earned_points(widgets_sold);
-
-        cout<<"Points Earned "<<widgets_sold_total<<"\n";
-        cout<<"Enter Y to continue, or any other character to exit."<<"\n";
-
-        cin>>loop;
+	cin>>loop;  
     }
+    while (loop == 'Y' || loop == 'y');
 
     return 0;
 }

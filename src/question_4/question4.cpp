@@ -1,44 +1,21 @@
-//
-/*
-Write a Receipt class that outputs a meal receipt. The class constructor expects a double meal_price and tip_rate, it has private variables tax (const variable), gratuity, and price, and public functions calculate_tax(returns double), calculate_gratuity(returns double), and display_receipt(double).  The tax rate is 8%.
-
-Implementation
-In header file, write the class interface and class function protypes.
-In cpp file, write the class function code.
-
-
-
-
-bool test_config()
-{
-    return true;
-}
-
-*/
 #include "question4.h"
-bool test_config()
+
+double Receipt:: calculate_tax()
 {
-    return true;
+    double total_tax = price*tax;
+    return total_tax; 
 }
-
-int get_earned_points(int sold)
+double Receipt::calculate_gratuity()
 {
-    if(sold > 0 && sold < 6)
-    {
-        return 1 * sold;
-    }
-    else if(sold > 5 && sold <11)
-    {
-        return 5 * sold;
-    }
-
-    else if(sold > 10 && sold <16)
-    {
-        return 10 * sold;
-    }
-    else if(sold > 15)
-    {
-        return 15 * sold;
-    }
-    return 0;
+    double total_tip = price*gratuity; 
+    return total_tip;
+}
+void Receipt::display_receipt()
+{
+    cout<<"\n"<<"Subtotal: $"<<price<<"\n";
+    cout<<"Tax Rate % "<<tax*100<<"\n";
+    cout<<"Total Tax: $"<<calculate_tax()<<"\n";
+    cout<<"Tip Percentage % "<<gratuity*100<<"\n";
+    cout<<"Tip: $"<<calculate_gratuity()<<"\n";
+    cout<<"Total: $ "<< price+gratuity+tax+calculate_tax()+calculate_gratuity()<<"\n";
 }
