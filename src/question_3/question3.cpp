@@ -1,4 +1,6 @@
 #include "question3.h"
+#include <iostream>
+
 bool test_config()
 {
     return true;

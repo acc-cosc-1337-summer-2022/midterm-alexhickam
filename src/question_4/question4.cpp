@@ -1,4 +1,10 @@
 #include "question4.h"
+#include <iostream>
+
+bool test_config()
+{
+    return true;
+}
 
 double Receipt:: calculate_tax()
 {

@@ -1,53 +1,39 @@
-
-/*
-Main Program Flow
-The main program prompts the user for number of cookies, calls the get_cookie_ingredients function, display the vector of double to screen, and continues until user opts to quit.  Validate for correct input.
-
-Cups of Sugar 1.5
-Cups of Butter 1
-Cups of Flour 2.75
+#include "question2.h"
+#include <iostream>
+#include <vector>
+using std::cout;
+using std::cin;
+using std::vector;
 
 int main()
 {
+    auto loop = 'n';
+    int cookie_count = -1;
 
-    return 0;
-}
+    do 
+    {
+        cout << "\n"<<"How many cookies are you making?"<<"\n"<<": ";
+        cin >> cookie_count;
 
-*/
-#include "question2.h"
-#include "question2.cpp"
-#include <iostream> 
-#include <vector>
+            if (cookie_count >= 0)
+            {
+                vector<double> ingredients = get_cookie_ingredients(cookie_count);
+                cout << "\nCups of Sugar " << ingredients[0] << "\n";
+                cout << "Cups of Butter " << ingredients[1] << "\n";
+                cout << "Cups of Flour " << ingredients[2] << "\n";
+            } 
 
-using std::cin;
-using std::cout;
-using std::vector;
+            else 
+            {
+                cout << "\n"<<"Invalid input. Number of cookies must be a positive value.";
+            }
 
-int main(){
-    float cookies_to_bake;
-    vector<double>ingredients;
-    //taking input from user
-    cout<<"Enter any alphabet or 0 to quit.."<<"\n";
-    cout<<"Enter number of cookies:";
-    cin >>cookies_to_bake ;
-    while(cookies_to_bake){
-        int p=(int)(cookies_to_bake);
-        if((cookies_to_bake==p) && cookies_to_bake>=1){
-            // calling the function get_cookie_ingredients
-            ingredients=get_cookie_ingredients(cookies_to_bake);
-            cout<<"The following recipe produces "<<cookies_to_bake<<" cookies:"<<"\n";
-            // Printing the output 
-            cout<<"Cups of Sugar "<<ingredients[0]<<"\n";
-            cout<<"Cups of Butter "<<ingredients[1]<<"\n";
-            cout<<"Cups of Flour "<<ingredients[2]<<"\n";
-            cout<<"Enter any alphabet or 0 to quit.."<<"\n";
-            cout<<"Enter number of cookies:";
-            cin >>cookies_to_bake ;
-        }
-        else{
-            cout<<"Please enter integer:"<<"\n";
-            cin>>cookies_to_bake;
-        }
+    cout <<"\n"<<"Enter the letter y or Y to restart."<<"\n"<<"Enter any other character to exit: ";
+
+	cin>>loop;  
     }
+    
+    while (loop == 'Y' || loop == 'y');
+
     return 0;
 }
